@@ -1,0 +1,11 @@
+-------------------------------------------------------  Doubly-Linked-List-------------------------------------------------------------------
+
+*#*#
+	The advantage of a doubly linked list (also called two – way linked list) is that given a node in
+	the list, we can navigate in both directions. A node in a singly linked list cannot be removed
+	unless we have the pointer to its predecessor. But in a doubly linked list, we can delete a node
+	even if we don’t have the previous node’s address (since each node has a left pointer pointing to
+	the previous node and can move backward).
+	
+*#*#
+	
