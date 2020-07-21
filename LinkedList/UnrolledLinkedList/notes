@@ -1,0 +1,37 @@
+--------------------------------------------------------Unrolled-Linked-List------------------------------------------------------------------
+
+*#*#
+
+	One of the biggest advantages of linked lists over arrays is that inserting an element at any
+	location takes only O(1) time. However, it takes O(n) to search for an element in a linked list.
+	
+	There is a simple variation of the singly linked list called unrolled linked lists.
+	An unrolled linked list stores multiple elements in each node (let us call it a block for our
+	convenience). In each block, a circular linked list is used to connect all nodes
+	
+	Assume that there will be no more than n elements in the unrolled linked list at any time. To
+	simplify this problem, all blocks, except the last one, should contain exactly elements. Thus,there will be no more than blocks at any time.
+	
+*#*#
+	Searching for an element in Unrolled Linked Lists
+	
+	In unrolled linked lists, we can find the kth element in O(root(n)):
+	
+	1. Traverse the list of blocks to the one that contains the kth node, i.e., the
+	   block. It takes O(root(n)) since we may find it by going through no more than
+	   blocks.
+	
+	2. Find the (k mod root(n))th node in the circular linked list of this block. It also takes O(root(n)) since there are no more than
+	   nodes in a single block
+	   
+*#*#
+	Inserting an element in Unrolled Linked Lists
+
+	When inserting a node, we have to re-arrange the nodes in the unrolled linked list to maintain the
+	properties previously mentioned, that each block contains root(n) nodes. Suppose that we insert a
+	node x after the ith node, and x should be placed in the jth block. Nodes in the jth block and in the
+	blocks after the jth block have to be shifted toward the tail of the list so that each of them still
+	have root(n) nodes. In addition, a new block needs to be added to the tail if the last block of the list
+	is out of space, i.e., it has more than root(n) nodes.
+	
+	
