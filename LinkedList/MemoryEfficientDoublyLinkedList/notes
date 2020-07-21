@@ -1,2 +1,34 @@
 -----------------------------------------------------Memory-Efficient-Doubly-Linked-List------------------------------------------------------
 
+*#*#
+	Recently a journal (Sinha) presented an alternative implementation of the doubly linked list ADT,
+	with insertion, traversal and deletion operations. This implementation is based on pointer
+	difference. Each node uses only one pointer field to traverse the list back and forth.
+
+*#*#
+	The ptrdiff pointer field contains the difference between the pointer to the next node and the
+	pointer to the previous node. The pointer difference is calculated by using exclusive-or (⊕)
+	operation.
+	
+	ptrdiff = pointer to previous node ⊕ pointer to next node.
+	The ptrdiff of the start node (head node) is the ⊕ of NULL and next node (next node to head).
+	Similarly, the ptrdiff of end node is the ⊕ of previous node (previous to end node) and NULL. As
+	an example, consider the following linked list
+	
+*#*#
+	To find the answer to this question let us consider the properties of |:
+		
+									X | X=0
+									X | 0 = X
+									X | Y = Y | X (symmetric)
+									(X | Y) | Z = X | (Y | Z) (transitive)
+
+	For the example above, let us assume that we are at C node and want to move to B. We know that
+	C’s ptrdiff is defined as B | D. If we want to move to B, performing | on C’s ptrdiff with D
+	would give B. This is due to the fact that
+									
+									(B | D) | D = B(since, D | D= 0)
+
+	Similarly, if we want to move to D, then we have to apply ⊕ to C’s ptrdiff with B to give D.
+									
+									(B | D) | B = D (since, B © B=0)																			
