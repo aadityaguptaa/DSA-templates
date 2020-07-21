@@ -87,19 +87,32 @@ void insertNode(CLLNode **head, int data, int position){
   }
   newNode->next = current->next;
   current->next = newNode;
+}
 
+void DeletingFrontNodeFromCLL(CLLNode **head){
+  if(*head == NULL){
+    printf("List is empty\n");
+    return;
+  }
+  CLLNode *current = *head;
+  while ((current->next) != *head) {
+    current = current->next;
+  }
+  current->next = (*head)->next;
+  *head = (*head)->next;
 }
 
 //driver function
 int main(void){
 
   CLLNode *head = NULL;
-  
+
   insertNode(&head, 5, 1);
   insertNode(&head, 99, 1);
   insertNode(&head, 2, 2);
   insertNode(&head, 3, 2);
   insertNode(&head, 100, 3);
+  DeletingFrontNodeFromCLL(&head);
   printCircularListData(&head);
 
 }
